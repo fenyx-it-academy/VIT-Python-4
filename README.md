@@ -2,7 +2,7 @@
 
 ## Soru-1
 
-Bir dizi sayı içeren bir liste verildiğinde, listedeki tekrarlayan sayıları bulan bir Python programı yazın. Bu soruyu cozerken Python kumelerini kullanmaya calisin.
+Bir dizi içeren bir liste verildiğinde, listedeki tekrarlayan elemanlari bulan bir Python programı yazın. Bu soruyu cozerken Python kumelerini kullanmaya calisin.
 
 ### Ornek Input:
 `1 2 3 4 12 45 1 2 54 65 77 8 1 2`
