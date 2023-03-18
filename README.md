@@ -34,3 +34,9 @@ Kullanıcının bir metin girmesini ve ardından bu metni Mors alfabesi koduna d
                    '8': '---..', '9': '----.', '0': '-----', ', ': '--..--',
                    '.': '.-.-.-', '?': '..--..', '/': '-..-.', '-': '-....-',
                    '(': '-.--.', ')': '-.--.-'}`
+                   
+### Ornek Input:
+Metin girin: `Fenyx IT Academy`
+
+### Ornek Output:
+`Mors kodu:  ..-. . -. -.-- -..-  .. -  .- -.-. .- -.. . -- -.-- `                  
