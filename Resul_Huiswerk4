@@ -1,0 +1,11 @@
+# 1. Sorunun cevabi:
+MyList = input("Elemanlar arasinda bosluk birakarak bir dizi girin.\n").split()
+RepetitiveItems = set()
+MySet = set()
+
+for i in MyList:
+    if i in MySet:
+        RepetitiveItems.add(i)
+    else:
+        MySet.add(i)
+print("Tekrarlayan öğeler: ", RepetitiveItems)
