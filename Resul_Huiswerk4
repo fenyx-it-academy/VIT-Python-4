@@ -44,3 +44,49 @@ for i, j in Order.items():
     print(f"➔  {i} {j} adet")
 print(
     f"Toplam Tutar:€{Bill}\nSiparisinizi hazirliyoruz.\nBizi tercih ettiginiz icin tesekkur ederiz.")
+    
+## BONUS
+#Metni Mors koduna dondurme
+
+TextToMorse = input("Mors koduna donusturmek istediginiz metni yazin.\n")
+TextToMorseCopy = TextToMorse.upper()
+MORSE_CODE_DICT = {'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.',  'F': '..-.', 'G': '--.', 'H': '....', 'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..', 'M': '--', 'N': '-.', 'O': '---', 'P': '.--.', 'Q': '--.-', 'R': '.-.', 'S': '...', 'T': '-', 'U': '..-', 'V': '...-',
+                   'W': '.--', 'X': '-..-', 'Y': '-.--', 'Z': '--..', '1': '.----', '2': '..---', '3': '...--', '4': '....-', '5': '.....', '6': '-....', '7': '--...', '8': '---..', '9': '----.', '0': '-----', ', ': '--..--', '.': '.-.-.-', '?': '..--..', '/': '-..-.', '-': '-....-', '(': '-.--.', ')': '-.--.-'}
+
+MorseCode = ""
+for i in TextToMorseCopy:
+    if i in MORSE_CODE_DICT:
+        MorseCode += MORSE_CODE_DICT[i]
+    elif i == " ":
+        MorseCode += " "
+    else:
+        print("Metnin icinde mors koduna uygun olmayan bir karakter var.\nBu karaktere kadar olan metin asagidadir.")
+        break
+print(f"Girdiginiz metin: {TextToMorse}\nMetnin mors kodu:{MorseCode}")
+
+
+# Mors Kodunu metne Dondurme
+MorseToText = input("Metne donusturmek istediginiz mors kodunu yazin.\n")
+
+MORSE_CODE_DICT = {'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.',  'F': '..-.', 'G': '--.', 'H': '....', 'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..', 'M': '--', 'N': '-.', 'O': '---', 'P': '.--.', 'Q': '--.-', 'R': '.-.', 'S': '...', 'T': '-', 'U': '..-', 'V': '...-',
+                   'W': '.--', 'X': '-..-', 'Y': '-.--', 'Z': '--..', '1': '.----', '2': '..---', '3': '...--', '4': '....-', '5': '.....', '6': '-....', '7': '--...', '8': '---..', '9': '----.', '0': '-----', ', ': '--..--', '.': '.-.-.-', '?': '..--..', '/': '-..-.', '-': '-....-', '(': '-.--.', ')': '-.--.-'}
+
+Text = ""
+Symbol = ""
+MorseToText += " "
+for i in MorseToText:
+    if i == " " or i == "." or i == "-":
+        if i != " ":
+            Symbol += i
+        else:
+            if Symbol in MORSE_CODE_DICT.values():
+                Text += list(MORSE_CODE_DICT.keys()
+                             )[list(MORSE_CODE_DICT.values()).index(Symbol)]
+
+                Symbol = ""
+            else:
+                Text += " "
+    else:
+        print("Mors kodu icerisinde tanimli olmayan bir karakter girdiniz.")
+
+print(Text)
