@@ -78,18 +78,19 @@ Symbol = ""
 MorseToText += " "
 Undefined = 0
 for i in MorseToText:
-    if i == " " or i == "." or i == "-":
-        if i != " ":
+    if i == " " or i == "." or i == "-": #Mors kodu bosluk, nookta ve tire karakterlerinden olusur. Aksi tum karakterler tanimsizdir.
+        if i != " ": #Koda karsilik gelen harfe ulasmak icin harfi olusturacak karakter dizisinin tamamlanmasi gerekiyor.
             Symbol += i
-        else:
-            if Symbol in MORSE_CODE_DICT.values():
+        else: #Eger bosluk varsa ya harfi olusturan karakter dizisi tamamlanmistir ya da kelime tamamlanmistir.
+            if Symbol in MORSE_CODE_DICT.values(): #Karakter dizisi tamamlandiysa harfi bulup metin icerisine yazdiriyorum.
                 Text += list(MORSE_CODE_DICT.keys()
-                             )[list(MORSE_CODE_DICT.values()).index(Symbol)]
+                             )[list(MORSE_CODE_DICT.values()).index(Symbol)] #Keys ve values icin ayri listeler yapildiginda index numaralari ayni olur.
 
-                Symbol = ""
-            else:
+                Symbol = "" #Karakter dizisine karsilik gelen harfi buldum metnime ekledim. Simdi yeni karaktere karsilik gelen harfi bulmak icin karakter dizisini sifirladim.
+            else: #Aksi ihtimalde kelime tamamlanmistir. Bundan dolayi metne bosluk ekliyorum.
                 Text += " "
-    else:
+    else: #Eger mors kodu karakteri olmayan bir karakter varsa kullaniciya bununla ilgli bilgi verecegim.
         Undefined += 1
 print(f"Mors kodu icerisinde tanimli olmayan toplam {Undefined} karakter var.")
 print(Text)
+
