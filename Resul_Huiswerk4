@@ -70,10 +70,13 @@ MorseToText = input("Metne donusturmek istediginiz mors kodunu yazin.\n")
 
 MORSE_CODE_DICT = {'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.',  'F': '..-.', 'G': '--.', 'H': '....', 'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..', 'M': '--', 'N': '-.', 'O': '---', 'P': '.--.', 'Q': '--.-', 'R': '.-.', 'S': '...', 'T': '-', 'U': '..-', 'V': '...-',
                    'W': '.--', 'X': '-..-', 'Y': '-.--', 'Z': '--..', '1': '.----', '2': '..---', '3': '...--', '4': '....-', '5': '.....', '6': '-....', '7': '--...', '8': '---..', '9': '----.', '0': '-----', ', ': '--..--', '.': '.-.-.-', '?': '..--..', '/': '-..-.', '-': '-....-', '(': '-.--.', ')': '-.--.-'}
+# fruits = ['apple', 'banana', 'cherry']
 
+# x = fruits.index("cherry")
 Text = ""
 Symbol = ""
 MorseToText += " "
+Undefined = 0
 for i in MorseToText:
     if i == " " or i == "." or i == "-":
         if i != " ":
@@ -87,6 +90,6 @@ for i in MorseToText:
             else:
                 Text += " "
     else:
-        print("Mors kodu icerisinde tanimli olmayan bir karakter girdiniz.")
-
+        Undefined += 1
+print(f"Mors kodu icerisinde tanimli olmayan toplam {Undefined} karakter var.")
 print(Text)
