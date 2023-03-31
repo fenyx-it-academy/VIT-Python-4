@@ -61,13 +61,52 @@ print("Toplam Hesap: {} Lira, Afiyet olsun ".format(total))
 #=====================================================
 
 
-BONUS
-Kullanıcının bir metin girmesini ve ardından bu metni Mors alfabesi koduna dönüştürüp yazdırmasını veya aynı şekilde Mors alfabesi kodunu alıp metne dönüştürmesini saglayan bir program yazin. Asagidaki mors alfabesi sozlugunu kullanabilirsiniz.
+# BONUS
+# Kullanıcının bir metin girmesini ve ardından bu metni Mors alfabesi koduna dönüştürüp yazdırmasını veya aynı şekilde Mors alfabesi kodunu alıp metne dönüştürmesini saglayan bir program yazin. Asagidaki mors alfabesi sozlugunu kullanabilirsiniz.
 
-MORSE_CODE_DICT = {'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.',  'F': '..-.', 'G': '--.', 'H': '....', 'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..', 'M': '--', 'N': '-.', 'O': '---', 'P': '.--.', 'Q': '--.-', 'R': '.-.', 'S': '...', 'T': '-', 'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-', 'Y': '-.--', 'Z': '--..', '1': '.----', '2': '..---', '3': '...--', '4': '....-', '5': '.....', '6': '-....', '7': '--...', '8': '---..', '9': '----.', '0': '-----', ', ': '--..--', '.': '.-.-.-', '?': '..--..', '/': '-..-.', '-': '-....-', '(': '-.--.', ')': '-.--.-'}
+# MORSE_CODE_DICT = {'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.',  'F': '..-.', 'G': '--.', 'H': '....', 'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..', 'M': '--', 'N': '-.', 'O': '---', 'P': '.--.', 'Q': '--.-', 'R': '.-.', 'S': '...', 'T': '-', 'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-', 'Y': '-.--', 'Z': '--..', '1': '.----', '2': '..---', '3': '...--', '4': '....-', '5': '.....', '6': '-....', '7': '--...', '8': '---..', '9': '----.', '0': '-----', ', ': '--..--', '.': '.-.-.-', '?': '..--..', '/': '-..-.', '-': '-....-', '(': '-.--.', ')': '-.--.-'}
 
-Ornek Input:
-Metin girin: Fenyx IT Academy
+# Ornek Input:
+# Metin girin: Fenyx IT Academy
 
-Ornek Output:
-Mors kodu:  ..-. . -. -.-- -..-  .. -  .- -.-. .- -.. . -- -.-- 
+# Ornek Output:
+# Mors kodu:  ..-. . -. -.-- -..-  .. -  .- -.-. .- -.. . -- -.-- 
+# Mors kodu:  ..-. . -. -.-- -..-  .. -  .- -.-. .- -.. . -- -.--
+
+MORSE_CODE_DICT = {'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.',  'F': '..-.', 
+                   'G': '--.', 'H': '....', 'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..', 
+                   'M': '--', 'N': '-.', 'O': '---', 'P': '.--.', 'Q': '--.-', 'R': '.-.',
+                   'S': '...', 'T': '-', 'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-',
+                   'Y': '-.--', 'Z': '--..', '1': '.----', '2': '..---', '3': '...--', '4': '....-',
+                   '5': '.....', '6': '-....', '7': '--...', '8': '---..', '9': '----.', '0': '-----',
+                   ', ': '--..--', '.': '.-.-.-', '?': '..--..', '/': '-..-.', '-': '-....-', '(': '-.--.', ')': '-.--.-'}
+
+
+secim=input("""Metni mors koduna çevirmek için: (1) 
+            Mors kodunu metne çevirmek için (2) 
+            çıkış için (Q)'ya basınız): 
+            """).upper()
+
+if secim==1:
+    text = int(input("Dönüştür istediğiniz metni yazın (bitirmek için Q yazın): ").upper())
+    donusum=""
+    for i in text:
+        if i not in MORSE_CODE_DICT.keys():
+            donusum+=" "
+        else:
+            donusum+=MORSE_CODE_DICT[i]+" "
+    print("'{}' metninin Mors alfabesi koduna dönüşümü: '{}' ".format(text,donusum))
+    
+    
+elif secim==2:
+    text = int(input("Dönüştür istediğiniz kodu yazın (bitirmek için Q yazın): ").upper())
+    donusum=""
+    
+    
+    pass
+
+elif secim=="Q":
+    print("Hoşça kalın")
+    
+else:
+    print("Hatalı giriş yaptınız")
