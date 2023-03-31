@@ -1,0 +1,93 @@
+# Soru-1
+# Bir dizi içeren bir liste verildiğinde, 
+# listedeki tekrarlayan elemanlari bulan bir Python programı yazın. 
+# Bu soruyu cozerken Python kumelerini kullanmaya calisin.
+listem=[1,2,3,5,7,9,13,2,4,5,6,7,]
+
+listem2 = []
+tekrarlayanlar = []
+
+for i in listem:                # for döngüsü ile listem üzerinde yineleme yaparak boş listede(listem2) olmayan değerleri listem2 içine
+    if i not in listem2:        #  listede var olanları da tekrarlayanlar içine ekliyoruz.
+        listem2.append(i)       # tekrar eden sayilari bir kez gormek icin set() fonksiyonu ile bir kume yapariz.
+        
+    else:
+        tekrarlayanlar.append(i)
+
+print(set(tekrarlayanlar))
+
+
+# Soru-2
+# Bir restoranın menüsünü Python sözlükleri kullanarak oluşturun ve kullanıcının yemekler sipariş etmesine izin verin.
+
+# Aşağıdaki adımları izleyebilirsiniz:
+
+# Restoranın menüsünü bir Python sözlüğü olarak oluşturun. Her yemek bir anahtar kelime, fiyatı ise değer olarak tanımlanabilir.
+# Kullanıcının menüyü görmesi için menüyü ekrana yazdırın.
+# Kullanıcıdan yemekler sipariş etmesini isteyin. Kullanıcı, bir yemek adı veya numarası girebilir.
+# Kullanıcının seçtiği yemekleri bir sözlükte saklayın.
+# Kullanıcının siparişlerini ekrana yazdırın ve toplam fiyatı hesaplayın.
+
+menu = {'kofte' : 5, 
+        'piyaz' : 3, 
+        'salata' : 2, 
+        'corba' : 4, 
+        'balik' : 7, 
+        'izgara' : 8, 
+        'icecek' : 3,
+        'tatli' : 6}
+
+print(menu)
+
+for yemek, fiyat in menu.items():
+    print("{}={}".format(yemek, fiyat))
+    
+    siparisler = {}
+        
+while True:
+        secim = input("Lutfen yemek seciminizi yaziniz (cikmak icin Q ya basiniz) :")
+        
+        if secim.upper() == "Q":
+            break
+        
+        elif secim in menu:
+       
+            if secim in siparisler:
+                siparisler[secim] += 1
+                
+            else:
+                siparisler[secim] = 1
+
+        else:
+            print("Geçersiz seçim.")
+toplam = 0
+for yemek, adet in siparisler.items():
+    fiyat = menu[yemek]
+    toplam +=fiyat*adet
+    print(yemek, "-", adet, "adet -", fiyat*adet, "euro")
+print("toplam siparis fiyati", toplam, "eurodur.") 
+
+
+#soru3
+# Kullanıcının bir metin girmesini ve ardından bu metni Mors alfabesi koduna dönüştürüp yazdırmasını 
+# veya aynı şekilde Mors alfabesi kodunu alıp metne dönüştürmesini saglayan bir program yazin. 
+# Asagidaki mors alfabesi sozlugunu kullanabilirsiniz.
+
+MORSE_CODE_DICT = {'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.',  'F': '..-.', 'G': '--.', 
+                   'H': '....', 'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..', 'M': '--', 'N': '-.', 
+                   'O': '---', 'P': '.--.', 'Q': '--.-', 'R': '.-.', 'S': '...', 'T': '-', 'U': '..-', 
+                   'V': '...-', 'W': '.--', 'X': '-..-', 'Y': '-.--', 'Z': '--..', '1': '.----', 
+                   '2': '..---', '3': '...--', '4': '....-', '5': '.....', '6': '-....', '7': '--...', 
+                   '8': '---..', '9': '----.', '0': '-----', ', ': '--..--', '.': '.-.-.-', '?': '..--..', 
+                   '/': '-..-.', '-': '-....-', '(': '-.--.', ')': '-.--.-'}
+
+metin = input("Lutfen bir metin giriniz :")
+
+mors_kodu = ""
+
+for i in metin.upper():                             # for döngüsü kullanılarak her bir karakter üzerinde dolaşılır.
+    if i in MORSE_CODE_DICT:                        # Eğer karakter Mors alfabesi sözlüğünde mevcutsa, bu karakterin Mors alfabesi kodu mors_kodu değişkenine eklenir. 
+        mors_kodu += MORSE_CODE_DICT[i] + " "       
+    else:
+        mors_kodu += " "
+print("Mors kodu: ", mors_kodu)
