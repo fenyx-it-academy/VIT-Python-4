@@ -55,4 +55,4 @@ elif giris=='2':
     for i in metin:
         yenimetin=yenimetin+morsters[i]
     print(yenimetin)
-    print(morsters)
+    
