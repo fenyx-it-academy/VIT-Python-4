@@ -1,0 +1,95 @@
+# 1. Sorunun cevabi:
+MyList = input("Elemanlar arasinda bosluk birakarak bir dizi girin.\n").split()
+RepetitiveItems = set()
+MySet = set()
+
+for i in MyList:
+    if i in MySet:
+        RepetitiveItems.add(i)
+    else:
+        MySet.add(i)
+print("Tekrarlayan öğeler: ", RepetitiveItems)
+
+#2. Sorunun cevabi:
+HetMenu = {"Koffie": 2.7,  "Cappucino": 3.0, "Espresso": 2.6, "Thee": 2.8, "Fanta": 2.8,
+           "Cola/Cola Zero": 2.8, "Chocolade Taart": 4, "Chesecake": 4, "Boterkoek": 3.2, "Brownie": 3.2, "Appel Taart": 4}
+print("😋---HET MENUKAART---😋")
+Number = 1
+for i, j in HetMenu.items():
+    print(f"{Number} ➔  {i}___ €{j}")
+    Number += 1
+MenuList = []
+for i in HetMenu.keys():
+    MenuList.append(i)
+Order = {}
+Bill = 0
+while True:
+    try:  # try ve except formati Choice degeri icin int' a donusmeyecek str gibi ifadelerde programin hata vermesini engelliyor.
+        Choice = int(input(
+            "Siparis icin istediginiz urunun numarasini giriniz.\nSiparisinizi tamamladiginizda '0' (sifir) tusuna basiniz.\n"))
+        if Choice == 0:
+            break
+        elif Choice < 0 or Choice > 11:
+            print("Gecersiz bir deger girdiniz.\nLutfen tekrar deneyiniz.")
+        else:
+            Number = int(input("Kac adet istersiniz?\n"))
+            Order[MenuList[Choice-1]] = Number 
+            Bill += HetMenu[MenuList[Choice-1]]*Number
+
+    except ValueError:
+        print("Gecersiz bir deger girdiniz.\nLutfen tekrar deneyiniz.")
+
+print("___Siparisiniz___")
+for i, j in Order.items():
+    print(f"➔  {i} {j} adet")
+print(
+    f"Toplam Tutar:€{Bill}\nSiparisinizi hazirliyoruz.\nBizi tercih ettiginiz icin tesekkur ederiz.")
+    
+## BONUS
+#Metni Mors koduna dondurme
+
+TextToMorse = input("Mors koduna donusturmek istediginiz metni yazin.\n")
+TextToMorseCopy = TextToMorse.upper()
+MORSE_CODE_DICT = {'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.',  'F': '..-.', 'G': '--.', 'H': '....', 'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..', 'M': '--', 'N': '-.', 'O': '---', 'P': '.--.', 'Q': '--.-', 'R': '.-.', 'S': '...', 'T': '-', 'U': '..-', 'V': '...-',
+                   'W': '.--', 'X': '-..-', 'Y': '-.--', 'Z': '--..', '1': '.----', '2': '..---', '3': '...--', '4': '....-', '5': '.....', '6': '-....', '7': '--...', '8': '---..', '9': '----.', '0': '-----', ', ': '--..--', '.': '.-.-.-', '?': '..--..', '/': '-..-.', '-': '-....-', '(': '-.--.', ')': '-.--.-'}
+
+MorseCode = ""
+for i in TextToMorseCopy:
+    if i in MORSE_CODE_DICT:
+        MorseCode += MORSE_CODE_DICT[i]
+        MorseCode += " "
+    elif i == " ":
+        MorseCode += " "
+    else:
+        print("Metnin icinde mors koduna uygun olmayan bir karakter var.\nBu karaktere kadar olan metin asagidadir.")
+        break
+print(f"Girdiginiz metin: {TextToMorse}\nMetnin mors kodu:{MorseCode}")
+
+
+# Mors Kodunu metne Dondurme
+MorseToText = input("Metne donusturmek istediginiz mors kodunu yazin.\n")
+
+MORSE_CODE_DICT = {'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.',  'F': '..-.', 'G': '--.', 'H': '....', 'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..', 'M': '--', 'N': '-.', 'O': '---', 'P': '.--.', 'Q': '--.-', 'R': '.-.', 'S': '...', 'T': '-', 'U': '..-', 'V': '...-',
+                   'W': '.--', 'X': '-..-', 'Y': '-.--', 'Z': '--..', '1': '.----', '2': '..---', '3': '...--', '4': '....-', '5': '.....', '6': '-....', '7': '--...', '8': '---..', '9': '----.', '0': '-----', ', ': '--..--', '.': '.-.-.-', '?': '..--..', '/': '-..-.', '-': '-....-', '(': '-.--.', ')': '-.--.-'}
+
+Text = ""
+Symbol = ""
+MorseToText += " "
+Undefined = 0
+for i in MorseToText:
+    if i == " " or i == "." or i == "-": #Mors kodu bosluk, nookta ve tire karakterlerinden olusur. Aksi tum karakterler tanimsizdir.
+        if i != " ": #Koda karsilik gelen harfe ulasmak icin harfi olusturacak karakter dizisinin tamamlanmasi gerekiyor.
+            Symbol += i
+        else: #Eger bosluk varsa ya harfi olusturan karakter dizisi tamamlanmistir ya da kelime tamamlanmistir.
+            if Symbol in MORSE_CODE_DICT.values(): #Karakter dizisi tamamlandiysa harfi bulup metin icerisine yazdiriyorum.
+                Text += list(MORSE_CODE_DICT.keys()
+                             )[list(MORSE_CODE_DICT.values()).index(Symbol)] #Keys ve values icin ayri listeler yapildiginda index numaralari ayni olur.
+
+                Symbol = "" #Karakter dizisine karsilik gelen harfi buldum metnime ekledim. Simdi yeni karaktere karsilik gelen harfi bulmak icin karakter dizisini sifirladim.
+            else: #Aksi ihtimalde kelime tamamlanmistir. Bundan dolayi metne bosluk ekliyorum.
+                Text += " "
+    else: #Eger mors kodu karakteri olmayan bir karakter varsa kullaniciya bununla ilgli bilgi verecegim.
+        Undefined += 1
+print(f"Mors kodu icerisinde tanimli olmayan toplam {Undefined} karakter var.")
+print(Text)
+
