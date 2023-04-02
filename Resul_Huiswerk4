@@ -57,6 +57,7 @@ MorseCode = ""
 for i in TextToMorseCopy:
     if i in MORSE_CODE_DICT:
         MorseCode += MORSE_CODE_DICT[i]
+        MorseCode += " "
     elif i == " ":
         MorseCode += " "
     else:
