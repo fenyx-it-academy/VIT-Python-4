@@ -56,3 +56,22 @@ for key, value in orders.items():
     print(f"{key} ____ €{value}")
 print(f"_____Total Price______: {currency}{total}")
 
+# BONUS
+MORSE_CODE_DICT = {'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.',  'F': '..-.', 'G': '--.', 'H': '....', 'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..', 'M': '--', 'N': '-.', 'O': '---', 'P': '.--.', 'Q': '--.-', 'R': '.-.', 'S': '...', 'T': '-', 'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-', 'Y': '-.--', 'Z': '--..', '1': '.----', '2': '..---', '3': '...--', '4': '....-', '5': '.....', '6': '-....', '7': '--...', '8': '---..', '9': '----.', '0': '-----', ', ': '--..--', '.': '.-.-.-', '?': '..--..', '/': '-..-.', '-': '-....-', '(': '-.--.', ')': '-.--.-'}
+
+choise = input("""Choose one option. 
+       Text to Mors _ Press '1' 
+       Mors to Text _ Press '2' 
+       """)
+if choise == '1':
+    text = input("Enter your text: ").upper()
+    for i in text:
+        if i == " ":
+            continue
+        else:
+            print(f"{MORSE_CODE_DICT[i]} ", end= " ")
+else:
+    mors = input("Enter your morse code: ").split(" ")
+    for i in mors:
+        print(list(MORSE_CODE_DICT.keys())[list(MORSE_CODE_DICT.values()).index(i)], end="")      
+
