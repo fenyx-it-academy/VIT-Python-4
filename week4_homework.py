@@ -85,4 +85,13 @@ for i in word:
     if i == " ":
         continue
     
-    print(MORSE_CODE_DICT.get(i), end=" ")
+    print(MORSE_CODE_DICT.get(i), end=" ")    
+
+    
+print("")
+mors = input("Mors alfabesi giriniz :").split(" ")
+
+for k in mors:
+    for i,j in MORSE_CODE_DICT.items():
+        if k == j:
+            print(i,end = (""))
