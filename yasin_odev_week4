@@ -1,0 +1,101 @@
+#Soru-1
+#Bir dizi içeren bir liste verildiğinde, listedeki tekrarlayan elemanlari bulan bir Python programı yazın. 
+#Bu soruyu cozerken Python kumelerini kullanmaya calisin.
+
+#Ornek Input:
+#1 2 3 4 12 45 1 2 54 65 77 8 1 2
+
+#Ornek Output:
+#Tekrarlayan öğeler: {1, 2}
+liste=[1, 2, 3, 4, 12, 45, 1, 2, 54, 65, 77, 8, 1, 2]
+liste1=[]
+tekrar_eden_sayilar=[]
+for i in liste:
+    if i not in liste1:
+        liste1.append(i)
+    else:
+        tekrar_eden_sayilar.append(i)
+print(set(tekrar_eden_sayilar))
+                    
+                    
+
+#Soru-2
+#Bir restoranın menüsünü Python sözlükleri kullanarak oluşturun ve kullanıcının yemekler sipariş etmesine izin verin.
+
+#Aşağıdaki adımları izleyebilirsiniz:
+
+#Restoranın menüsünü bir Python sözlüğü olarak oluşturun. 
+#Her yemek bir anahtar kelime, fiyatı ise değer olarak tanımlanabilir.
+#Kullanıcının menüyü görmesi için menüyü ekrana yazdırın.
+#Kullanıcıdan yemekler sipariş etmesini isteyin. Kullanıcı, bir yemek adı veya numarası girebilir.
+#Kullanıcının seçtiği yemekleri bir sözlükte saklayın.
+#Kullanıcının siparişlerini ekrana yazdırın ve toplam fiyatı hesaplayın.
+
+print("Lokantamiza Hos geldiniz!!!")
+print(" ")
+menu={ "mercimek":   3,"ezo gelin":  3,"kelle paca": 3,"kuru":  7,"nohut":   7,
+"kemalpasa":  5,"kabak tatlisi": 5,"ayran":     2,"kola":      2,"fanta":     2,}
+
+for a, d in menu.items():
+    print("{} => {} TL" .format(a,d) )
+  
+siparis={}
+ucret=0
+while True:
+    print(" ")
+    svy=input("Lutfen siparis vermek istediginiz yemegi girin:")
+    print("siparisi bitirmek icin 'q' ya basin!!!")
+    if svy == "q":
+        break
+    elif svy not in  menu:
+        print("Gecerli bir secim yapiniz!!!")
+        continue
+    
+    siparis[svy]=menu[svy]
+         
+print("""----SİPARİŞİNİZ------""")    
+for a, d in siparis.items():       
+    print("{} => {} TL" .format(a,d) )
+    
+    ucret+=d
+print("Toplam: ",ucret," TL")
+print("Afiyet olsun!!! Tekrar bekleriz!!!")
+                    
+
+
+#odev 3
+#Kullanıcının bir metin girmesini ve ardından bu metni Mors alfabesi koduna dönüştürüp yazdırmasını 
+#veya aynı şekilde Mors alfabesi kodunu alıp metne dönüştürmesini saglayan bir program yazin. 
+#Asagidaki mors alfabesi sozlugunu kullanabilirsiniz.
+
+
+mors_kod= {
+'A': '.-',   'B': '-...', 
+'C': '-.-.', 'D': '-..', 'E': '.',  
+'F': '..-.', 'G': '--.', 'H': '....', 
+'I': '..',   'J': '.---', 'K': '-.-', 'L': '.-..', 
+'M': '--',   'N': '-.', 'O': '---', 'P': '.--.', 
+'Q': '--.-', 'R': '.-.', 'S': '...', 'T': '-', 
+'U': '..-',  'V': '...-', 'W': '.--', 'X': '-..-', 
+'Y': '-.--', 'Z': '--..', '1': '.----', '2': '..---', 
+'3': '...--', '4': '....-', '5': '.....', '6': '-....', 
+'7': '--...', '8': '---..', '9': '----.', '0': '-----', 
+', ': '--..--', '.': '.-.-.-', '?': '..--..', '/': '-..-.', 
+'-': '-....-', '(': '-.--.', ')': '-.--.-'}
+
+#Ornek Input:
+#Metin girin: Fenyx IT Academy
+
+#Ornek Output:
+#Mors kodu:  ..-. . -. -.-- -..-  .. -  .- -.-. .- -.. . -- -.-- 
+cumle= input("Lutfen cevirmek istediginiz metni girin:").upper()
+
+for i in range(0, len(cumle)):
+    index=cumle[i]
+    sonuc=mors_kod.get(index)
+    print(sonuc, end="")
+
+
+                              
+                    
+                     
