@@ -37,7 +37,7 @@ print(f"""Menü          Fiyat
 ----          -----
 """)
 for i,j in menu.items():
-     print (f"""{i}        {j} Euro """)
+     print(f"""{i}    \t{j} Euro """)
 
 orders = {}
 total = 0
@@ -48,23 +48,20 @@ while True:
     if order == "q":
             if orders == {}:
                  print("Sipariş alım sayfasından çıkılıyor...")
+                 break
             else:
-                print("Siparişiniz alınmıştır...")
-                for j in orders.values():
-                     total += j          
-                break
-            
+                 break       
 
     for i,j in menu.items():
 
         if order == i:
             orders[i] = j
+            total += j
     print(orders)
 
 for i in orders.keys():
                 
     print(i)
-
 print(f"Toplam sipariş tutarınız ise {total} avro'dur")  
 
 print("------------------------------------------------------------------------------")
